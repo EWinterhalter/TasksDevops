@@ -1,4 +1,5 @@
 source secret.sh
+#здесь хранятся значения переменных
 
 PERCENT=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
 
