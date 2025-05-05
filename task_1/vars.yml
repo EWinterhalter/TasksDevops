@@ -1,0 +1,4 @@
+nginx_port: 80
+server_name: localhost
+root_dir: /var/www/html
+index_file: index.html
