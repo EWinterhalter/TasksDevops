@@ -36,7 +36,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t task_4 .
+          docker build -t task_4 ./task_4
 
 
   deploy:
@@ -48,5 +48,5 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker build -t task_4 .
+          docker build -t task_4 ./task4
           docker run --rm -p 8080:8080 task_4
