@@ -18,9 +18,10 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.24.2'
-
+      - name: run go init
+        run: go mod init task_4
+        
       - name: Run tests
-        run: go mod init testik
         run: go test -v ./...
 
   build:
