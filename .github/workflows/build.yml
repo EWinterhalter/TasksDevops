@@ -20,7 +20,7 @@ jobs:
           go-version: '1.24.2'
       - name: run go init
         run: go mod init task_4
-        
+
       - name: Run tests
         run: go test -v ./...
 
@@ -36,7 +36,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t task_4 .
+          docker build -t task_4 ./task4
+
 
   deploy:
     needs: build
@@ -47,5 +48,5 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker build -t task_4 .
+          docker build -t task_4 ./task4
           docker run --rm -p 8080:8080 task_4
