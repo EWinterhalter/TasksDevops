@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN go mod tidy
 
-COPY main.go ./
+COPY main.go .
 
 RUN go build -o main .
 
