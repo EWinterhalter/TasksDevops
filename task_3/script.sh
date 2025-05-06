@@ -5,7 +5,7 @@ PERCENT=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
 
 echo "percentage of memory used $PERCENT%"
 
-if [ "$PERCENT" -ge 83 ]; then
+if [ "$PERCENT" -ge 85 ]; then
     SUBJECT="Percentage of memory used is high"
     MESSAGE="On your disk used $PERCENT%."
 
