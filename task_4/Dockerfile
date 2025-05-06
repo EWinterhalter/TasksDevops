@@ -2,9 +2,9 @@ FROM golang:alpine
 
 WORKDIR /app
 
-RUN go mod tidy
+COPY app/main.go ./
 
-COPY main.go .
+RUN go mod init temp && go mod tidy
 
 RUN go build -o main .
 
