@@ -6,7 +6,7 @@ COPY go.mod ./
 
 RUN go mod tidy
 
-COPY . .
+COPY main.go
 
 RUN go build -o main .
 
