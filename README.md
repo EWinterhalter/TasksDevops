@@ -20,4 +20,4 @@ Dockerfile и Docker-Compose, обеспечивающий запуск веб-�
 Директория task_4, так же результат выполнения есть в Actions 
 
 Пайплайн для сборки и доставки golang приложения
-![image](https://github.com/EWinterhalter/TasksDevops/blob/main/src/4.jpg "jpg")
+![image](https://github.com/EWinterhalter/TasksDevops/blob/main/src/3.jpg "jpg")
