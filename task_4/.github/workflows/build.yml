@@ -7,6 +7,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task_4
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -15,6 +18,8 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.24.2'
+      - name: run go init
+        run: go mod init task_4
 
       - name: Run tests
         run: go test -v ./...
@@ -31,16 +36,29 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t task_4 .
+          docker build -t task_4 ./task_4
+
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  needs: build
+  runs-on: ubuntu-latest
+  timeout-minutes: 30  
+  steps:
+    - uses: actions/checkout@v3
 
-      - name: Run Docker container
-        run: |
-          docker build -t task_4 .
-          docker run --rm -p 8080:8080 task_4
+    - name: Build Docker image
+      run: docker build -t task_4 ./task_4
+
+    - name: Run container in background
+      run: docker run -d --rm -p 8080:8080 --name my_app task_4
+
+    - name: Wait for server to start
+      run: |
+        docker ps | grep my_app || exit 1
+        if curl -s http://localhost:8080; then
+            echo "Server is running!"
+            exit 0
+        fi
+        done
+        echo "Server did not start in time!"
+        exit 1
