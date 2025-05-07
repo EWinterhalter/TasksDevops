@@ -40,25 +40,25 @@ jobs:
 
 
   deploy:
-  needs: build
-  runs-on: ubuntu-latest
-  timeout-minutes: 30  
-  steps:
-    - uses: actions/checkout@v3
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  
+    steps:
+      - uses: actions/checkout@v3
 
-    - name: Build Docker image
-      run: docker build -t task_4 ./task_4
+      - name: Build Docker image
+        run: docker build -t task_4 ./task_4
 
-    - name: Run container in background
-      run: docker run -d --rm -p 8080:8080 --name my_app task_4
+      - name: Run container in background
+        run: docker run -d --rm -p 8080:8080 --name my_app task_4
 
-    - name: Wait for server to start
-      run: |
-        docker ps | grep my_app || exit 1
-        if curl -s http://localhost:8080; then
-            echo "Server is running!"
-            exit 0
-        fi
-        done
-        echo "Server did not start in time!"
-        exit 1
+      - name: Wait for server to start
+        run: |
+          docker ps | grep my_app || exit 1
+          if curl -s http://localhost:8080; then
+              echo "Server is running!"
+              exit 0
+          fi
+          done
+          echo "Server did not start in time!"
+          exit 1
