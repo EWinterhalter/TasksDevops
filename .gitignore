@@ -1,3 +1,10 @@
 /task_1/ansible.cfg
 /task_tests
 /task_3/secret.sh
+/task_5/terraform.tfvars
+/task_5/key.json
+/task_5/meta.txt
+/task_5/terraform.tfstate.backup
+/task_5/.terraform.lock.hcl
+/task_5/.terraform
+/task_5/terraform.tfstate
